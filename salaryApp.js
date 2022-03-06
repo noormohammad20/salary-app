@@ -84,22 +84,7 @@ const initialCountListener = function () {
   document.getElementById("initial-count").innerText = chartItems.length
 }
 
-function addRecordHandler() {
-  const name = document.getElementById("name").value
-  const salary = document.getElementById("salary").value
-  document.getElementById('salary').value = ''
-  document.getElementById('name').value = ''
-  if (!name || !salary) {
-    showDataError(name, salary)
 
-    return
-  }
-
-
-  addRecord(name, salary)
-
-
-}
 
 function addRecord(name, salary) {
   const newItem = getRecord(name, salary)
@@ -148,16 +133,16 @@ const displayLastItemDialog = function (lastItem) {
   document.getElementById("showSalary").innerText = d3.format(",.0f")(
     lastItem.salary
   )
-  dlg.dialog({
-    buttons: {
-      Ok: function () {
-        $(this).dialog("close")
-      },
-    },
-  })
+  // dlg.dialog({
+  //   buttons: {
+  //     Ok: function () {
+  //       $(this).dialog("close")
+  //     },
+  //   },
+  // })
 }
 
-var showDataError = function (name, salary) {
+const showDataError = function (name, salary) {
   const dlg = document.getElementById("#dialog-error")
   dlg.classList.remove("hide")
 
@@ -172,6 +157,18 @@ var showDataError = function (name, salary) {
       },
     },
   })
+}
+function addRecordHandler() {
+  const name = document.getElementById("name").value
+  const salary = document.getElementById("salary").value
+  document.getElementById('salary').value = ''
+  document.getElementById('name').value = ''
+  if (!name || !salary) {
+    showDataError(name, salary)
+
+    return
+  }
+  addRecord(name, salary)
 }
 
 function toggleErrorMessage(selector, value, msg) {
@@ -191,13 +188,13 @@ const showRecordCount = function (data) {
 
   document.getElementById("numberOfRecords").innerText = data.length
 
-  dlg.dialog({
-    buttons: {
-      Ok: function () {
-        $(this).dialog("close")
-      },
-    },
-  })
+  // dlg.dialog({
+  //   buttons: {
+  //     Ok: function () {
+  //       $(this).dialog("close")
+  //     },
+  //   },
+  // })
 
 }
 
