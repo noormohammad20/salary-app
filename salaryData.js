@@ -61,4 +61,4 @@ let salary_data = {
     name: "Jhankar Mahbub",
     salary: "53655",
   },
-};
+}
